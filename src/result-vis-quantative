@@ -1,0 +1,32 @@
+{
+  "data": {
+    "values": [
+      {"Participants": "P1", "T1,C1": 8.8, "T1,C2": 17.11, "T2,C2": 18.38, "T2,C1": 17.58},
+      {"Participants": "P2", "T1,C1": 7, "T1,C2": 38.81, "T2,C2": 47.93, "T2,C1": 11.48},
+      {"Participants": "P3", "T1,C1": 12.15, "T1,C2": 73.38, "T2,C2": 73.36, "T2,C1": 11.02},
+      {"Participants": "P4", "T1,C1": 19.56, "T1,C2": 22.19, "T2,C2": 90, "T2,C1": 33.41} ,
+      {"Participants": "P5", "T1,C1": 9.71, "T1,C2": 26.69, "T2,C2":58.49, "T2,C1": 34.26},
+      {"Participants": "P6", "T1,C1": 11.04, "T1,C2": 14.07, "T2,C2": 48.12, "T2,C1": 13.4}
+    ]
+  },
+  "hconcat": [
+    {
+  "transform": [{"fold": ["T1,C2", "T1,C1"]}],
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Participants", "type": "ordinal",    
+},
+    "y": {"field": "value", "type": "quantitative", "title": "Task Completion time in Seconds"},
+    "color": {"field": "key"}
+  }
+  },
+  {
+  "transform": [{"fold": ["T2,C2", "T2,C1"]}],
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Participants", "type": "ordinal"},
+    "y": {"field": "value", "type": "quantitative", "title": "Task Completion time in Seconds"},
+    "color": {"field": "key"}
+  }},
+  ]
+}	
