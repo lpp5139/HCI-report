@@ -1,0 +1,64 @@
+{
+  "data": {"url": "data/cars.json"},
+  "transform": [
+    {"filter": " datum.Year > '1980-1-1'"}
+  ],
+  "hconcat": [
+    {
+      "width": 400,
+      "height": 300,
+      "mark": {"type": "bar", "tooltip": {"content": "data"}},
+      "params": [
+        {
+          "name": "pts",
+          "select": {
+            "type": "interval",
+            "encodings": ["x"],
+            "resolve": "global"
+          }
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "Acceleration",
+          "type": "quantitative",
+          "aggregate": "mean"
+        },
+        "x": {
+          "field": "Name",
+          "type": "Nominal",
+          "axis": {"labels": false},
+          "sort": "y"
+        },
+        "color": {
+          "condition": {"param": "pts", "type": "ordinal"},
+          "value": "grey"
+        }
+      }
+    },
+    {
+      "width": 400,
+      "height": 300,
+      "mark": {"type": "point"},
+      "transform": [{"filter": {"param": "pts"}}],
+      "encoding": {
+        "x": {
+          "type": "quantitative",
+          "field": "Miles_per_Gallon",
+          "title": "Miles Per Gallon",
+          "scale": {"domain": [10, 50]}
+        },
+        "y": {
+          "type": "quantitative",
+          "field": "Horsepower",
+          "title": "Horsepower",
+          "scale": {"domain": [40, 150]}
+        },
+        "tooltip": {"field": "Origin", "type": "Nominal"},
+
+      //  "shape": {"field": "Origin", "type": "nominal"}
+
+      }
+    }
+  ]
+}
